@@ -1,6 +1,6 @@
 using System.Security.Cryptography.X509Certificates;
 
-namespace App.Ordering.OrderingApi;
+namespace App.Ordering.OrderingApi.Core.Data;
 public class OrderDetail
 {
     public int OrderDetailId { get; set; }

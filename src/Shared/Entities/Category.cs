@@ -1,4 +1,4 @@
-namespace App.Src.Shared.Entities;
+namespace App.Shared.Entities;
 //Danh Sách Sản Phẩm
 public class Category
 {
