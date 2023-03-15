@@ -13,7 +13,7 @@ public class OrderingDbContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new OrderTypeConfiguration());
-        modelBuilder.ApplyConfiguration(new OrderDetailTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new OrderEntityTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new OrderDetailEntityTypeConfiguration());
     }
 }
