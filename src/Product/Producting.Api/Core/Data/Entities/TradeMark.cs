@@ -1,4 +1,5 @@
-namespace App.Shared.Entities;
+namespace App.Producting.Producting.Api.Core.Data.Entities;
+
 //Danh Sách Thương Hiệu 
 public class TradeMark
 {
