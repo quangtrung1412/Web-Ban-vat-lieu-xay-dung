@@ -1,4 +1,4 @@
-namespace App.Ordering.OrderingApi.Core.Data;
+namespace App.Ordering.Api.Core.Data;
 
 public class Order
 {

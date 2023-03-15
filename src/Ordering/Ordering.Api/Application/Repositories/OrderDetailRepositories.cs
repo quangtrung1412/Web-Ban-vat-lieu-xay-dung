@@ -1,7 +1,7 @@
-using App.Ordering.OrderingApi.Core.Data;
-using App.Ordering.OrderingApi.Core.Repositories;
+using App.Ordering.Api.Core.Data;
+using App.Ordering.Api.Core.Repositories;
 
-namespace App.Ordering.OrderingApi.Application.Repositories;
+namespace App.Ordering.Api.Application.Repositories;
 
 public class OrderDetailRepository : IOrderDetailRepository
 {

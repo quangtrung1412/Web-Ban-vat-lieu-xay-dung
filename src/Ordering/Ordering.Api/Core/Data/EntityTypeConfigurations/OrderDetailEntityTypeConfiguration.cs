@@ -2,7 +2,7 @@ using App.Shared.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace App.Ordering.OrderingApi.Core.Data.EntityTypeConfigurations;
+namespace App.Ordering.Api.Core.Data.EntityTypeConfigurations;
 
 public class OrderDetailEntityTypeConfiguration : IEntityTypeConfiguration<OrderDetail>
 {

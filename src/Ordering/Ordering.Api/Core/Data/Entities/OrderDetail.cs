@@ -1,7 +1,6 @@
-using System.Security.Cryptography.X509Certificates;
 using App.Shared.Entities;
 
-namespace App.Ordering.OrderingApi.Core.Data;
+namespace App.Ordering.Api.Core.Data;
 public class OrderDetail
 {
     public string OrderDetailCode { get; set; }
