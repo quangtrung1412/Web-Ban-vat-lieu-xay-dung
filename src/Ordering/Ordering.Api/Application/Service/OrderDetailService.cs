@@ -1,7 +1,7 @@
-using App.Ordering.OrderingApi.Core.Data;
-using App.Ordering.OrderingApi.Core.Service;
+using App.Ordering.Api.Core.Data;
+using App.Ordering.Api.Core.Service;
 
-namespace App.Ordering.OrderingApi.Application.Service;
+namespace App.Ordering.Api.Application.Service;
 
 public class OrderDetailService : IOrderDetailService
 {

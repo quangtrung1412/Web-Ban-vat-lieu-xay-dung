@@ -1,8 +1,8 @@
-using App.Ordering.OrderingApi.Application.Repositories;
-using App.Ordering.OrderingApi.Core.Data.EntityTypeConfigurations;
+using App.Ordering.Api.Application.Repositories;
+using App.Ordering.Api.Core.Data.EntityTypeConfigurations;
 using Microsoft.EntityFrameworkCore;
 
-namespace App.Ordering.OrderingApi.Core.Data;
+namespace App.Ordering.Api.Core.Data;
 
 public class OrderingDbContext : DbContext
 {
