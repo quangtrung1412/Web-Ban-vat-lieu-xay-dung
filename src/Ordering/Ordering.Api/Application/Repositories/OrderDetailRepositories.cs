@@ -8,10 +8,10 @@ public class OrderDetailRepository : IOrderDetailRepository
     private readonly OrderingMemoryContext _memoryContext;
     private readonly OrderingDbContext _dbContext;
 
-    public OrderDetailRepository(OrderingMemoryContext memoryContext,OrderingDbContext dbContext)
+    public OrderDetailRepository(OrderingMemoryContext memoryContext, OrderingDbContext dbContext)
     {
-        _memoryContext= memoryContext;
-        _dbContext =dbContext;
+        _memoryContext = memoryContext;
+        _dbContext = dbContext;
     }
     public Task<OrderDetail> Add(OrderDetail entity)
     {
@@ -51,5 +51,10 @@ public class OrderDetailRepository : IOrderDetailRepository
     public Task<OrderDetail> UpdateTotalPrice(long totalPrice)
     {
         throw new NotImplementedException();
+    }
+
+    public void SaveChangesAsync()
+    {
+
     }
 }
