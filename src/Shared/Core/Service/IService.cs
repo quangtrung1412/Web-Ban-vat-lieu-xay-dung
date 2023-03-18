@@ -7,4 +7,5 @@ public interface IService<TEntity> where TEntity : class
     Task<TEntity> Add(TEntity entity);
     Task<TEntity> Update(TEntity entity);
     Task<TEntity> Delete(string id);
+    void SaveChangesAsync();
 }
