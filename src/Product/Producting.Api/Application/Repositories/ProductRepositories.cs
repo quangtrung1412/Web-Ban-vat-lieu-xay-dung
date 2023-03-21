@@ -27,7 +27,6 @@ public class ProductRepositories : IProductRepositories
             return null;
         }
     }
-
     public async Task<Product> Delete(string id)
     {
         var product = await GetById(id);
@@ -119,11 +118,11 @@ public class ProductRepositories : IProductRepositories
             return null;
         }
     }
-    public void SaveChangesAsync()
+    public async void SaveChangesAsync()
     {
         try
         {
-            _dbContext.SaveChangesAsync();
+           await _dbContext.SaveChangesAsync();
         }
         catch (Exception ex)
         {

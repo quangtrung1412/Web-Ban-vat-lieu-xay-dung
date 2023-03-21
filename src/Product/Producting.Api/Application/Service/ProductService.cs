@@ -76,7 +76,9 @@ public class ProductService : IProductService
             {
                 _memoryContext.Products.Remove(id);
                 var productDb = await _productRepositories.Delete(id);
-                if (productDb == null)
+                if (productDb != null)
+                    _productRepositories.SaveChangesAsync();
+                else
                     _memoryContext.Products.Add(id, product);
             }
         }
@@ -106,7 +108,9 @@ public class ProductService : IProductService
             var oldCost = product.Cost;
             product.Cost = cost;
             var productDb = await _productRepositories.UpdateCost(productCode, cost);
-            if (productDb == null)
+            if (productDb != null)
+                _productRepositories.SaveChangesAsync();
+            else
                 product.Cost = oldCost;
         }
         return product;
@@ -120,7 +124,9 @@ public class ProductService : IProductService
             var oldInventory = product.Inventory;
             product.Inventory = inventory;
             var productDb = await _productRepositories.UpdateInventory(productCode, inventory);
-            if (productDb == null)
+            if (productDb != null)
+                _productRepositories.SaveChangesAsync();
+            else
                 product.Inventory = oldInventory;
         }
         return product;
@@ -134,7 +140,9 @@ public class ProductService : IProductService
             var oldRetailPrice = product.RetailPrice;
             product.RetailPrice = retailPrice;
             var productDb = await _productRepositories.UpdateRetailPrice(productCode, retailPrice);
-            if (productDb == null)
+            if (productDb != null)
+                _productRepositories.SaveChangesAsync();
+            else
                 product.RetailPrice = oldRetailPrice;
         }
         return product;
@@ -148,16 +156,24 @@ public class ProductService : IProductService
             var oldStatus = product.Status;
             product.Status = status;
             var productDb = await _productRepositories.UpdateStatus(productCode, status);
-            if (productDb == null)
+            if (productDb != null)
+                _productRepositories.SaveChangesAsync();
+            else
                 product.Status = oldStatus;
         }
         return product;
     }
-    public async Task<List<Product>> GetAll(string search, int page)
+    public async Task<List<Product>> GetAll(string search, int page = 1)
     {
+        var pageSize = 10;
+
         List<Product> listProduct = new List<Product>();
         listProduct = _memoryContext.Products.Values.Where(p => string.IsNullOrEmpty(search) || p.ProductName.Contains(search)
         || p.TradeMarkName.Contains(search) || p.CategoryName.Contains(search)).ToList();
-        return await Task.FromResult(listProduct);
+
+        var data = listProduct.OrderBy(p => p.ProductCode)
+                              .Skip((page - 1) * pageSize)
+                              .Take(pageSize).ToList();
+        return await Task.FromResult(data);
     }
 }

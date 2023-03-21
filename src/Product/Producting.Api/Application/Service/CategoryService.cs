@@ -28,7 +28,7 @@ public class CategoryService : ICategoryService
             if (category != null)
                 _categoryRepositories.SaveChangesAsync();
             else
-                _memoryContext.Products.Remove(categoryCode);
+                _memoryContext.Categories.Remove(categoryCode);
         }
         return category;
     }
@@ -50,13 +50,33 @@ public class CategoryService : ICategoryService
         return category;
     }
 
-    public Task<List<Category>> GetAll(string CategoryName)
+    public async Task<List<Category>> GetAll(string search, int page = 1)
     {
-        throw new NotImplementedException();
+        var pageSize = 10;
+
+        List<Category> listCategory = new List<Category>();
+        listCategory = _memoryContext.Categories.Values.Where(p => string.IsNullOrEmpty(search) || p.CategoryName.Contains(search)).ToList();
+       
+        var data = listCategory.OrderBy(p => p.CategoryName)
+                              .Skip((page - 1) * pageSize)
+                              .Take(pageSize).ToList();
+        return await Task.FromResult(data);
     }
 
-    public Task<Category> GetById(string id)
+
+    public async Task<Category> GetById(string id)
     {
-        throw new NotImplementedException();
+        if (!String.IsNullOrEmpty(id))
+        {
+            if (_memoryContext.Categories.TryGetValue(id, out Category category))
+                return category;
+            else
+            {
+                category = await _categoryRepositories.GetById(id);
+                _memoryContext.Categories.Add(category.CategoryCode, category);
+                return category;
+            }
+        }
+        return null;
     }
 }

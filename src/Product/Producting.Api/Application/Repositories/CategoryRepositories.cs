@@ -53,9 +53,16 @@ public class CategoryRepositories : ICategoryRepositories
         return category;
     }
 
-    public void SaveChangesAsync()
+    public async void SaveChangesAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+           await _dbContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+        }
     }
 
 }

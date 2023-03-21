@@ -5,5 +5,5 @@ namespace App.Producting.Api.Core.Service;
 
 public interface ITradeMarkService : IService<TradeMark>
 {
-    Task<List<TradeMark>> GetAll(string search);
+    
 }
