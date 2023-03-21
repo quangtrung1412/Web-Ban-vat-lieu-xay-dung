@@ -18,7 +18,7 @@ public class ProductRepositories : IProductRepositories
     {
         try
         {
-            _dbContext.Add(entity);
+            _dbContext.Products.Add(entity);
             return await Task.FromResult(entity);
         }
         catch (Exception ex)
@@ -35,7 +35,7 @@ public class ProductRepositories : IProductRepositories
         {
             if (product != null)
             {
-                _dbContext.Remove(id);
+                _dbContext.Products.Remove(product);
             }
             return product;
         }
@@ -45,35 +45,12 @@ public class ProductRepositories : IProductRepositories
             return null;
         }
     }
-
-    public Task<List<Product>> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<Product> GetById(string id)
     {
         var product = await _dbContext.Products.FindAsync(id);
         return product;
     }
 
-    public async Task<Product> Update(Product entity)
-    {
-        var product = await GetById(entity.ProductCode);
-        try
-        {
-            if (product != null)
-            {
-                _dbContext.Update(entity);
-            }
-            return product;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, ex.Message);
-            return null;
-        }
-    }
     public async Task<Product> UpdateInventory(string productCode, long inventory)
     {
         var product = await GetById(productCode);

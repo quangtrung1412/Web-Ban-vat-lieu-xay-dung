@@ -6,7 +6,7 @@ namespace App.Producting.Producting.Api.Core.Data;
 public class ProductMemoryContext
 {
     public Dictionary<string,Product> Products = new Dictionary<string, Product>();
-    public Dictionary<int,Category> Categories = new Dictionary<int, Category>();
-    public Dictionary<int,TradeMark> TradeMarks = new Dictionary<int, TradeMark>();  
+    public Dictionary<string,Category> Categories = new Dictionary<string, Category>();
+    public Dictionary<string,TradeMark> TradeMarks = new Dictionary<string, TradeMark>();  
     public static string GetProductKey(string productCode)=> $"{productCode}";
 }

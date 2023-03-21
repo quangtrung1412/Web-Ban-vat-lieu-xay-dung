@@ -9,4 +9,5 @@ public interface IProductService : IService<Product>
     Task<Product> UpdateStatus(string productCode, bool status);
     Task<Product> UpdateCost(string productCode, long cost);
     Task<Product> UpdateRetailPrice(string productCode, long retailPrice);
+    Task<List<Product>> GetAll(string search);
 }

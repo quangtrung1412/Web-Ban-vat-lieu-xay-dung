@@ -6,5 +6,5 @@ namespace App.Producting.Api.Core.Service;
 
 public interface ICategoryService:IService<Category>
 {
-    
+    Task<List<Category>> GetAll(string search);
 }

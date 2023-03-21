@@ -4,6 +4,6 @@ namespace App.Producting.Api.Core.Data.Entities;
 public class TradeMark
 {
     //Mã Thương Hiệu
-    public int TradeMarkId {get;set;}
+    public string TradeMarkCode {get;set;}
     public string TradeMarkName {get;set;}
 }
