@@ -7,8 +7,10 @@ namespace App.Producting.Api.Controller;
 
 public class ProductController : ControllerBase
 {
+    [HttpGet]
     public async Task<IActionResult> GetProduct(string search, int page)
     {
         return await Task.FromResult(Ok());
     }
+    
 }
