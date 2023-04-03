@@ -12,5 +12,5 @@ public class Order
  public string Seller {get;set;}
  public long Paid {get;set;}
  public long Sale {get;set;}
- public int Status {get;set;}
+ public OrderingStatus Status {get;set;}
 }

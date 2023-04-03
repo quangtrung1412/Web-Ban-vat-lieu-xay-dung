@@ -3,9 +3,10 @@ using App.Shared.Core.Repositories;
 
 namespace App.Ordering.Api.Core.Repositories;
 
-public interface IOrderDetailRepository:IRepositories<OrderDetail>
+public interface IOrderDetailRepository : IRepositories<OrderDetail>
 {
-    Task<OrderDetail> UpdateOrderDate(DateTime dateTime);
-    Task<OrderDetail> UpdateTotalPrice(long totalPrice);
-    Task<OrderDetail> UpdateSale(long sale);
+    Task<OrderDetail> UpdateNumberProduct(string orderDetailCode, long numberProduct);
+    Task<OrderDetail> UpdateOrderDate(string orderDetailCode, DateTime dateTime);
+    Task<OrderDetail> UpdateTotalPrice(string orderDetailCode, long totalPrice);
+    Task<OrderDetail> UpdateSale(string orderDetailCode, long sale);
 }

@@ -5,56 +5,93 @@ namespace App.Ordering.Api.Application.Repositories;
 
 public class OrderDetailRepository : IOrderDetailRepository
 {
-    private readonly OrderingMemoryContext _memoryContext;
     private readonly OrderingDbContext _dbContext;
+    private readonly ILogger<OrderDetailRepository> _logger;
 
-    public OrderDetailRepository(OrderingMemoryContext memoryContext, OrderingDbContext dbContext)
+    public OrderDetailRepository(OrderingDbContext dbContext, ILogger<OrderDetailRepository> logger)
     {
-        _memoryContext = memoryContext;
         _dbContext = dbContext;
+        _logger = logger;
     }
-    public Task<OrderDetail> Add(OrderDetail entity)
+    public async Task<OrderDetail> Add(OrderDetail entity)
+    {
+        try
+        {
+            _dbContext.OrderDetails.Add(entity);
+            return await Task.FromResult(entity);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
+    }
+
+    public async Task<OrderDetail> Delete(string id)
+    {
+        var orderDetail = await GetById(id);
+        try
+        {
+            if (orderDetail != null)
+            {
+                _dbContext.OrderDetails.Remove(orderDetail);
+            }
+            return orderDetail;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
+    }
+
+    public async Task<OrderDetail> GetById(string id)
+    {
+        var orderDetail = await _dbContext.OrderDetails.FindAsync(id);
+        return orderDetail;
+    }
+
+    public async void SaveChangesAsync()
+    {
+        try
+        {
+            await _dbContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+        }
+    }
+    public async Task<OrderDetail> UpdateNumberProduct(string orderDetailCode, long numberProduct)
+    {
+        var orderDetail = await GetById(orderDetailCode);
+        try
+        {
+            if (orderDetail != null)
+            {
+                orderDetail.NumberProduct = numberProduct;
+            }
+            return orderDetail;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
+    }
+
+    public Task<OrderDetail> UpdateOrderDate(string orderDetailCode, DateTime dateTime)
     {
         throw new NotImplementedException();
     }
 
-    public Task<OrderDetail> Delete(string id)
+    public Task<OrderDetail> UpdateSale(string orderDetailCode, long sale)
     {
         throw new NotImplementedException();
     }
 
-    public Task<List<OrderDetail>> GetAll()
+    public Task<OrderDetail> UpdateTotalPrice(string orderDetailCode, long totalPrice)
     {
         throw new NotImplementedException();
-    }
-
-    public Task<OrderDetail> GetById(string id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<OrderDetail> Update(OrderDetail entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<OrderDetail> UpdateOrderDate(DateTime dateTime)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<OrderDetail> UpdateSale(long sale)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<OrderDetail> UpdateTotalPrice(long totalPrice)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void SaveChangesAsync()
-    {
-
     }
 }
