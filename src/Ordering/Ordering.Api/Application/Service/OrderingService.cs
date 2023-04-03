@@ -2,7 +2,7 @@ using App.Ordering.Api.Core.Data;
 using App.Ordering.Api.Core.Repositories;
 using App.Ordering.Api.Core.Service;
 
-namespace App.Ordering.OrderingApi.Application.Service;
+namespace App.Ordering.Api.Application.Service;
 
 public class OrderingService : IOrderingService
 {
@@ -12,6 +12,7 @@ public class OrderingService : IOrderingService
     {
         _memoryContext = memoryContext;
     }
+
     public Task<Order> Add(Order entity)
     {
         throw new NotImplementedException();
@@ -22,7 +23,7 @@ public class OrderingService : IOrderingService
         throw new NotImplementedException();
     }
 
-    public Task<List<Order>> GetAll()
+    public Task<List<Order>> GetAll(string search, int page = 1)
     {
         throw new NotImplementedException();
     }
@@ -32,39 +33,33 @@ public class OrderingService : IOrderingService
         throw new NotImplementedException();
     }
 
-    public Task<Order> Update(Order entity)
+    public Task<Order> UpdateDeliveryDate(string orderCode, DateTime deliveryDate)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Order> UpdateDeliveryDate(DateTime deliveryDate)
+    public Task<Order> UpdateOrderDate(string orderCode, DateTime dateTime)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Order> UpdateOrderDate(DateTime orderDate)
+    public Task<Order> UpdatePaid(string orderCode, long paid)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Order> UpdatePaid(long paid)
+    public Task<Order> UpdateSale(string orderCode, long sale)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Order> UpdateSale(long sale)
+    public Task<Order> UpdateStatus(string orderCode, OrderingStatus status)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Order> UpdateStatus(int status)
+    public Task<Order> UpdateTotalPrice(string orderCode, long totalPrice)
     {
         throw new NotImplementedException();
     }
-
-    public Task<Order> UpdateTotalPrice(long totalPrice)
-    {
-        throw new NotImplementedException();
-    }
-    public void SaveChangesAsync(){}
 }

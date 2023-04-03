@@ -11,6 +11,7 @@ public class OrderDetailService : IOrderDetailService
     {
         _memoryContext = memoryContext;
     }
+
     public Task<OrderDetail> Add(OrderDetail entity)
     {
         throw new NotImplementedException();
@@ -21,7 +22,7 @@ public class OrderDetailService : IOrderDetailService
         throw new NotImplementedException();
     }
 
-    public Task<List<OrderDetail>> GetAll()
+    public Task<List<OrderDetail>> GetAll(string search, int page = 1)
     {
         throw new NotImplementedException();
     }
@@ -31,29 +32,23 @@ public class OrderDetailService : IOrderDetailService
         throw new NotImplementedException();
     }
 
-    public Task<OrderDetail> Update(OrderDetail entity)
+    public Task<OrderDetail> UpdateNumberProduct(string orderDetailCode,long numberProduct)
     {
         throw new NotImplementedException();
     }
 
-    public Task<OrderDetail> UpdateNumberProduct(long numberProduct)
+    public Task<OrderDetail> UpdateOrderDate(string orderDetailCode, DateTime dateTime)
     {
         throw new NotImplementedException();
     }
 
-    public Task<OrderDetail> UpdateOrderDate(DateTime dateTime)
+    public Task<OrderDetail> UpdateSale(string orderDetailCode, long sale)
     {
         throw new NotImplementedException();
     }
 
-    public Task<OrderDetail> UpdateSale(long sale)
+    public Task<OrderDetail> UpdateTotalPrice(string orderDetailCode, long totalPrice)
     {
         throw new NotImplementedException();
     }
-
-    public Task<OrderDetail> UpdateTotalPrice(long totalPrice)
-    {
-        throw new NotImplementedException();
-    }
-    public void SaveChangesAsync(){}
 }

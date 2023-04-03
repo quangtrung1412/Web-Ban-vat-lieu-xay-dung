@@ -7,9 +7,9 @@ namespace App.Producting.Api.Application.Repositories;
 public class ProductRepositories : IProductRepositories
 {
     private readonly ProductDbContext _dbContext;
-    private readonly ILogger<ProductDbContext> _logger;
+    private readonly ILogger<ProductRepositories> _logger;
 
-    public ProductRepositories(ProductDbContext dbContext, ILogger<ProductDbContext> logger)
+    public ProductRepositories(ProductDbContext dbContext, ILogger<ProductRepositories> logger)
     {
         _dbContext = dbContext;
         _logger = logger;

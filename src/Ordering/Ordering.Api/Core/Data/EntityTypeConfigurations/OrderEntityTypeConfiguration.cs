@@ -51,7 +51,7 @@ public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
         .HasColumnName("Sale");
 
         builder.Property(e => e.Status)
-        .HasColumnName("Seller");
+        .HasColumnName("Status");
         
         var navigation = builder.Metadata.FindNavigation(nameof(OrderDetail.OrderDetailCode));
         navigation.SetPropertyAccessMode(PropertyAccessMode.Field);

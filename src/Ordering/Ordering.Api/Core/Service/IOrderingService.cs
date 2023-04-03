@@ -4,12 +4,12 @@ using App.Shared.Core.Service;
 
 namespace App.Ordering.Api.Core.Service;
 
-public interface IOrderingService:IService<Order>
+public interface IOrderingService : IService<Order>
 {
-    Task<Order> UpdateDeliveryDate(DateTime deliveryDate);
-    Task<Order> UpdatePaid(long paid);
-    Task<Order> UpdateStatus(int status);
-    Task<Order> UpdateOrderDate(DateTime dateTime);
-    Task<Order> UpdateTotalPrice(long totalPrice);
-    Task<Order> UpdateSale(long sale);
+    Task<Order> UpdateDeliveryDate(string orderCode, DateTime deliveryDate);
+    Task<Order> UpdatePaid(string orderCode, long paid);
+    Task<Order> UpdateOrderDate(string orderCode, DateTime dateTime);
+    Task<Order> UpdateTotalPrice(string orderCode, long totalPrice);
+    Task<Order> UpdateSale(string orderCode, long sale);
+    Task<Order> UpdateStatus(string orderCode, OrderingStatus status);
 }
