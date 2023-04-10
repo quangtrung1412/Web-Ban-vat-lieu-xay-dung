@@ -2,6 +2,8 @@ using App.Producting.Api.Core.Data.Entities;
 using App.Producting.Api.Core.Repositories;
 using App.Producting.Api.Core.Service;
 using App.Producting.Producting.Api.Core.Data;
+using App.Shared.Core.Handle;
+using App.Shared.Utils;
 
 namespace App.Producting.Api.Application.Service;
 
@@ -17,7 +19,12 @@ public class TradeMarkService : ITradeMarkService
     }
     public async Task<TradeMark> Add(TradeMark entity)
     {
-        var tradeMarkCode = Guid.NewGuid().ToString();
+        var tradeMarkCode= "";
+        var numberMax = _memoryContext.TradeMarks.Keys.Max();
+        var numberTradeMark= Int32.Parse(numberMax.Substring(2)) + 1;
+        var numberTradeMarkCode = GenerateCode.GenerateCodeFollowNumber(numberTradeMark);
+        tradeMarkCode= Constants.ProductKey + numberTradeMarkCode;
+        entity.TradeMarkCode =tradeMarkCode;
         TradeMark tradeMark = new TradeMark();
         var isAdded = _memoryContext.TradeMarks.TryAdd(tradeMarkCode, entity);
         if (isAdded)

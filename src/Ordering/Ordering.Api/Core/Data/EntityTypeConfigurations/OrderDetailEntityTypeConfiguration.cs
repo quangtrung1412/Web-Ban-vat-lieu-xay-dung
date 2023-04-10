@@ -16,6 +16,10 @@ public class OrderDetailEntityTypeConfiguration : IEntityTypeConfiguration<Order
         .IsUnicode(false)
         .HasColumnName("OrderDetailCode");
 
+        builder.Property(e => e.OrderCode)
+        .HasMaxLength(10)
+        .HasColumnName("OrderCode");
+
         builder.Property(e => e.ProductCode)
         .HasMaxLength(10)
         .HasColumnName("ProductCode");

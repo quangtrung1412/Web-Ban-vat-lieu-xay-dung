@@ -2,6 +2,8 @@ using App.Producting.Api.Core.Data.Entities;
 using App.Producting.Api.Core.Repositories;
 using App.Producting.Api.Core.Service;
 using App.Producting.Producting.Api.Core.Data;
+using App.Shared.Core.Handle;
+using App.Shared.Utils;
 
 namespace App.Producting.Api.Application.Service;
 
@@ -19,7 +21,13 @@ public class CategoryService : ICategoryService
     }
     public async Task<Category> Add(Category entity)
     {
-        var categoryCode = Guid.NewGuid().ToString();
+        var categoryCode = "";
+        var numberMax = _memoryContext.Categories.Keys.Max();
+        var numberCategory= Int32.Parse(numberMax.Substring(2)) + 1;
+        var numberCategoryCode = GenerateCode.GenerateCodeFollowNumber(numberCategory);
+        categoryCode = Constants.ProductKey + numberCategoryCode;
+        entity.CategoryCode =categoryCode;
+
         Category category = new Category();
         var isAdded = _memoryContext.Categories.TryAdd(categoryCode, entity);
         if (isAdded)

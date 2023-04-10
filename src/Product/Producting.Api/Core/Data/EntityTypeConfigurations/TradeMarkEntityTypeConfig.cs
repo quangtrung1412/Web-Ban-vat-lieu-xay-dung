@@ -8,6 +8,16 @@ public class TradeMarkEntityTypeConfiguration : IEntityTypeConfiguration<TradeMa
 {
     public void Configure(EntityTypeBuilder<TradeMark> builder)
     {
-        throw new NotImplementedException();
+        builder.ToTable("TradeMark");
+        builder.HasKey(c => c.TradeMarkCode);
+
+        builder.Property(e => e.TradeMarkCode)
+        .HasMaxLength(10)
+        .IsUnicode(false)
+        .HasColumnName("TradeMarkCode");
+
+        builder.Property(e => e.TradeMarkName)
+        .HasMaxLength(100)
+        .HasColumnName("TradeMarkName");
     }
 }
