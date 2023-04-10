@@ -4,6 +4,7 @@ public class Order
 {
  public string OrderCode {get;set;}
  public DateTime OrderDate {get;set;}
+ public string OrderDetailCode{get;set;}
  public DateTime DeliveryDate {get;set;}
  public long TotalPrice {get;set;}
  public string Email {get;set;}

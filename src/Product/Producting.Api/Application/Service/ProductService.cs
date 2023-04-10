@@ -2,6 +2,7 @@ using System.Reflection.Metadata;
 using App.Producting.Api.Core.Repositories;
 using App.Producting.Api.Core.Service;
 using App.Producting.Producting.Api.Core.Data;
+using App.Shared.Core.Handle;
 using App.Shared.Entities;
 using App.Shared.Utils;
 
@@ -24,35 +25,13 @@ public class ProductService : IProductService
     public async Task<Product> Add(Product entity)
     {
         var productCode = "";
-        var loop = true;
-        while (loop)
-        {
-            var numberProductCode = "";
-            var number = _memoryContext.Products.Count() + 1;
-            if (number < 10)
-            {
-                numberProductCode = $"0000{number}";
-            }
-            if (10 <= number && number < 100)
-            {
-                numberProductCode = $"000{number}";
-            }
-            if (100 <= number && number < 1000)
-            {
-                numberProductCode = $"00{number}";
-            }
-            if (1000 <= number && number < 10000)
-            {
-                numberProductCode = $"0{number}";
-            }
-            if (10000 <= number && number < 100000)
-            {
-                numberProductCode = $"{number}";
-            }
-            productCode = Constants.ProductKey + numberProductCode;
-            if (!_memoryContext.Products.TryGetValue(productCode, out Product product1))
-                loop = false;
-        }
+        var productLength = _memoryContext.Products.Count();
+        var numberMax = _memoryContext.Products.Keys.Max();
+        var numberProduct = Int32.Parse(numberMax.Substring(2)) + 1;
+
+        var numberProductCode = GenerateCode.GenerateCodeFollowNumber(numberProduct);
+        productCode = Constants.ProductKey + numberProductCode;
+
         Product product = new Product();
         var isAdded = _memoryContext.Products.TryAdd(productCode, entity);
         if (isAdded)
@@ -106,7 +85,6 @@ public class ProductService : IProductService
         if (product != null)
         {
             var oldCost = product.Cost;
-            product.Cost = cost;
             var productDb = await _productRepositories.UpdateCost(productCode, cost);
             if (productDb != null)
                 _productRepositories.SaveChangesAsync();
@@ -122,7 +100,6 @@ public class ProductService : IProductService
         if (product != null)
         {
             var oldInventory = product.Inventory;
-            product.Inventory = inventory;
             var productDb = await _productRepositories.UpdateInventory(productCode, inventory);
             if (productDb != null)
                 _productRepositories.SaveChangesAsync();
@@ -138,7 +115,6 @@ public class ProductService : IProductService
         if (product != null)
         {
             var oldRetailPrice = product.RetailPrice;
-            product.RetailPrice = retailPrice;
             var productDb = await _productRepositories.UpdateRetailPrice(productCode, retailPrice);
             if (productDb != null)
                 _productRepositories.SaveChangesAsync();
@@ -154,7 +130,6 @@ public class ProductService : IProductService
         if (product != null)
         {
             var oldStatus = product.Status;
-            product.Status = status;
             var productDb = await _productRepositories.UpdateStatus(productCode, status);
             if (productDb != null)
                 _productRepositories.SaveChangesAsync();
