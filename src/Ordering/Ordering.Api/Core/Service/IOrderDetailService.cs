@@ -6,7 +6,6 @@ namespace App.Ordering.Api.Core.Service;
 public interface IOrderDetailService : IService<OrderDetail>
 {
     Task<OrderDetail> UpdateNumberProduct(string orderDetailCode,long numberProduct);
-    Task<OrderDetail> UpdateOrderDate(string orderDetailCode, DateTime dateTime);
     Task<OrderDetail> UpdateTotalPrice(string orderDetailCode, long totalPrice);
     Task<OrderDetail> UpdateSale(string orderDetailCode, long sale);
 }

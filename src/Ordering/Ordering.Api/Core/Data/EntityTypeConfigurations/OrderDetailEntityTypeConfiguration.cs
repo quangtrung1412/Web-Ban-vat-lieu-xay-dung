@@ -12,12 +12,12 @@ public class OrderDetailEntityTypeConfiguration : IEntityTypeConfiguration<Order
         builder.HasKey(e => e.OrderDetailCode);
 
         builder.Property(e => e.OrderDetailCode)
-        .HasMaxLength(7)
+        .HasMaxLength(10)
         .IsUnicode(false)
         .HasColumnName("OrderDetailCode");
 
         builder.Property(e => e.ProductCode)
-        .HasMaxLength(7)
+        .HasMaxLength(10)
         .HasColumnName("ProductCode");
 
         builder.Property(e => e.ProductName)

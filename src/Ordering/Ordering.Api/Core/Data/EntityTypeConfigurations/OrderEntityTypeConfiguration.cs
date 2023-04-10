@@ -10,9 +10,13 @@ public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
         builder.ToTable("Order");
         builder.HasKey(x => x.OrderCode);
         builder.Property(e => e.OrderCode)
-        .HasMaxLength(7)
+        .HasMaxLength(10)
         .IsUnicode(false)
         .HasColumnName("OrderCode");
+        
+        builder.Property(e => e.OrderDetailCode)
+        .HasMaxLength(10)
+        .HasColumnName("OrderDetailCode");
 
         builder.Property(e => e.OrderDate)
         .HasPrecision(7)
@@ -52,8 +56,6 @@ public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
 
         builder.Property(e => e.Status)
         .HasColumnName("Status");
-        
-        var navigation = builder.Metadata.FindNavigation(nameof(OrderDetail.OrderDetailCode));
-        navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
+
     }
 }

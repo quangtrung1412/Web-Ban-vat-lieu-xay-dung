@@ -79,19 +79,39 @@ public class OrderDetailRepository : IOrderDetailRepository
             return null;
         }
     }
-
-    public Task<OrderDetail> UpdateOrderDate(string orderDetailCode, DateTime dateTime)
+    public async Task<OrderDetail> UpdateSale(string orderDetailCode, long sale)
     {
-        throw new NotImplementedException();
+        var orderDetail = await GetById(orderDetailCode);
+        try
+        {
+            if (orderDetail != null)
+            {
+                orderDetail.Sale = sale;
+            }
+            return orderDetail;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
     }
 
-    public Task<OrderDetail> UpdateSale(string orderDetailCode, long sale)
+    public async Task<OrderDetail> UpdateTotalPrice(string orderDetailCode, long totalPrice)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<OrderDetail> UpdateTotalPrice(string orderDetailCode, long totalPrice)
-    {
-        throw new NotImplementedException();
+        var orderDetail = await GetById(orderDetailCode);
+        try
+        {
+            if (orderDetail != null)
+            {
+                orderDetail.TotalPrice = totalPrice;
+            }
+            return orderDetail;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
     }
 }

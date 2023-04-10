@@ -52,38 +52,123 @@ public class OrderingRepository : IOrderingRepository
         return order;
     }
 
-    public void SaveChangesAsync()
+    public async void SaveChangesAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _dbContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+        }
     }
 
-    public Task<Order> UpdateDeliveryDate(string orderCode, DateTime deliveryDate)
+    public async Task<Order> UpdateDeliveryDate(string orderCode, DateTime deliveryDate)
     {
-        throw new NotImplementedException();
+        var order = await GetById(orderCode);
+        try
+        {
+            if (order != null)
+            {
+                order.DeliveryDate = deliveryDate;
+            }
+            return order;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
     }
 
-    public Task<Order> UpdateOrderDate(string orderCode, DateTime dateTime)
+    public async Task<Order> UpdateOrderDate(string orderCode, DateTime dateTime)
     {
-        throw new NotImplementedException();
+        var order = await GetById(orderCode);
+        try
+        {
+            if (order != null)
+            {
+                order.OrderDate = dateTime;
+            }
+            return order;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
     }
 
-    public Task<Order> UpdatePaid(string orderCode, long paid)
+    public async Task<Order> UpdatePaid(string orderCode, long paid)
     {
-        throw new NotImplementedException();
+        var order = await GetById(orderCode);
+        try
+        {
+            if (order != null)
+            {
+                order.Paid = paid;
+            }
+            return order;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
     }
 
-    public Task<Order> UpdateSale(string orderCode, long sale)
+    public async Task<Order> UpdateSale(string orderCode, long sale)
     {
-        throw new NotImplementedException();
+        var order = await GetById(orderCode);
+        try
+        {
+            if (order != null)
+            {
+                order.Sale = sale;
+            }
+            return order;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
     }
 
-    public Task<Order> UpdateStatus(string orderCode, OrderingStatus status)
+    public async Task<Order> UpdateStatus(string orderCode, OrderingStatus status)
     {
-        throw new NotImplementedException();
+         var order = await GetById(orderCode);
+        try
+        {
+            if (order != null)
+            {
+                order.Status = status;
+            }
+            return order;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
     }
 
-    public Task<Order> UpdateTotalPrice(string orderCode, long totalPrice)
+    public async Task<Order> UpdateTotalPrice(string orderCode, long totalPrice)
     {
-        throw new NotImplementedException();
+         var order = await GetById(orderCode);
+        try
+        {
+            if (order != null)
+            {
+                order.TotalPrice = totalPrice;
+            }
+            return order;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+            return null;
+        }
     }
 }
