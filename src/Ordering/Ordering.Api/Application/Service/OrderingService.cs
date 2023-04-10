@@ -22,13 +22,12 @@ public class OrderingService : IOrderingService
     public async Task<Order> Add(Order entity)
     {
         var orderCode = "";
-        var orderLength = _memoryContext.Orders.Count();
         var numberMax = _memoryContext.Orders.Keys.Max();
         var numberOrder = Int32.Parse(numberMax.Substring(2)) + 1;
 
         var numberOrderCode = GenerateCode.GenerateCodeFollowNumber(numberOrder);
         orderCode = Constants.ProductKey + numberOrderCode;
-
+        entity.OrderCode = orderCode;
         Order order = new Order();
         var isAdded = _memoryContext.Orders.TryAdd(orderCode, entity);
         if (isAdded)

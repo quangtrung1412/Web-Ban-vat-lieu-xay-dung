@@ -12,11 +12,7 @@ public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
         builder.Property(e => e.OrderCode)
         .HasMaxLength(10)
         .IsUnicode(false)
-        .HasColumnName("OrderCode");
-        
-        builder.Property(e => e.OrderDetailCode)
-        .HasMaxLength(10)
-        .HasColumnName("OrderDetailCode");
+        .HasColumnName("OrderCode");   
 
         builder.Property(e => e.OrderDate)
         .HasPrecision(7)

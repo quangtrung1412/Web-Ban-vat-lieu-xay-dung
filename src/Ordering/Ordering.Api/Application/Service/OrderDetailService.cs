@@ -20,12 +20,12 @@ public class OrderDetailService : IOrderDetailService
     public async Task<OrderDetail> Add(OrderDetail entity)
     {
         var orderDetailCode = "";
-        var orderDetailLength = _memoryContext.OrderDetails.Count();
         var numberMax = _memoryContext.OrderDetails.Keys.Max();
         var numberOrderDetail = Int32.Parse(numberMax.Substring(2)) + 1;
 
         var numberOrderDetailCode = GenerateCode.GenerateCodeFollowNumber(numberOrderDetail);
         orderDetailCode = Constants.ProductKey + numberOrderDetailCode;
+        entity.OrderDetailCode =orderDetailCode;
 
         OrderDetail OrderDetail = new OrderDetail();
         var isAdded = _memoryContext.OrderDetails.TryAdd(orderDetailCode, entity);
@@ -63,7 +63,7 @@ public class OrderDetailService : IOrderDetailService
     {
         var pageSize = 10;
         List<OrderDetail> listOrderDetail = new List<OrderDetail>();
-        listOrderDetail = _memoryContext.OrderDetails.Values.Where(o => string.IsNullOrEmpty(search) || o.OrderDetailCode.Contains(search)
+        listOrderDetail = _memoryContext.OrderDetails.Values.Where(o => string.IsNullOrEmpty(search) || o.OrderCode.Contains(search)
         || o.ProductCode.Contains(search)).ToList();
 
         var data = listOrderDetail.OrderBy(p => p.OrderDetailCode)

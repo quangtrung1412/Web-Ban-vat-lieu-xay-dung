@@ -25,12 +25,12 @@ public class ProductService : IProductService
     public async Task<Product> Add(Product entity)
     {
         var productCode = "";
-        var productLength = _memoryContext.Products.Count();
         var numberMax = _memoryContext.Products.Keys.Max();
         var numberProduct = Int32.Parse(numberMax.Substring(2)) + 1;
 
         var numberProductCode = GenerateCode.GenerateCodeFollowNumber(numberProduct);
         productCode = Constants.ProductKey + numberProductCode;
+        entity.ProductCode =productCode;
 
         Product product = new Product();
         var isAdded = _memoryContext.Products.TryAdd(productCode, entity);

@@ -1,4 +1,3 @@
-using App.Producting.Api.Core.Data.Entities;
 using App.Producting.Api.Core.Service;
 using App.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +10,10 @@ namespace App.Producting.Api.Controller;
 public class ProductController : ControllerBase
 {
     private readonly IProductService _productService;
-    private readonly ICategoryService _categoryService;
-    private readonly ITradeMarkService _tradeMarkService;
 
-    public ProductController(IProductService productService, ICategoryService categoryService, ITradeMarkService tradeMarkService)
+    public ProductController(IProductService productService)
     {
         _productService = productService;
-        _categoryService = categoryService;
-        _tradeMarkService = tradeMarkService;
     }
     [HttpGet]
     public async Task<IActionResult> GetProduct(string search, int page)
@@ -50,31 +45,56 @@ public class ProductController : ControllerBase
     [Route("/Cost/{productId}")]
     public async Task<IActionResult> UpdateCost(string productId, long cost)
     {
-        return await Task.FromResult(Ok());
+        Product productResult = new Product();
+        if (productId != null && cost > 0)
+        {
+            productResult = await _productService.UpdateCost(productId, cost);
+        }
+        return Ok(productResult);
     }
 
     [HttpPatch]
     [Route("/Invetory/{productId}")]
     public async Task<IActionResult> UpdateInventory(string productId, long inventory)
     {
-        return await Task.FromResult(Ok());
+        Product productResult = new Product();
+        if (productId != null && inventory > 0)
+        {
+            productResult = await _productService.UpdateInventory(productId, inventory);
+        }
+        return Ok(productResult);
     }
     [HttpPatch]
     [Route("/RetailPrice/{productId}")]
     public async Task<IActionResult> UpdateRetailPrice(string productId, long retailPrice)
     {
-        return await Task.FromResult(Ok());
+        Product productResult = new Product();
+        if (productId != null && retailPrice > 0)
+        {
+            productResult = await _productService.UpdateRetailPrice(productId, retailPrice);
+        }
+        return Ok(productResult);
     }
     [HttpPatch]
     [Route("/Status/{productId}")]
     public async Task<IActionResult> UpdateStatus(string productId, bool status)
     {
-        return await Task.FromResult(Ok());
+        Product productResult = new Product();
+        if (productId != null)
+        {
+            productResult = await _productService.UpdateStatus(productId, status);
+        }
+        return Ok(productResult);
     }
     [HttpDelete]
     [Route("/{productId}")]
     public async Task<IActionResult> DeleteProduct(string productId)
     {
-        return await Task.FromResult(Ok());
+         Product productResult = new Product();
+        if (productId != null)
+        {
+            productResult = await _productService.Delete(productId);
+        }
+        return Ok(productResult);
     }
 }
