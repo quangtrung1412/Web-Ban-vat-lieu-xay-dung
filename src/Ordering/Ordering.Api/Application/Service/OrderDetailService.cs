@@ -25,7 +25,7 @@ public class OrderDetailService : IOrderDetailService
 
         var numberOrderDetailCode = GenerateCode.GenerateCodeFollowNumber(numberOrderDetail);
         orderDetailCode = Constants.ProductKey + numberOrderDetailCode;
-        entity.OrderDetailCode =orderDetailCode;
+        entity.OrderDetailCode = orderDetailCode;
 
         OrderDetail OrderDetail = new OrderDetail();
         var isAdded = _memoryContext.OrderDetails.TryAdd(orderDetailCode, entity);
@@ -72,6 +72,12 @@ public class OrderDetailService : IOrderDetailService
         return await Task.FromResult(data);
     }
 
+    public async Task<List<OrderDetail>> GetOrderDetailByOrderCode(string orderCode)
+    {
+        List<OrderDetail> listOrderDetail = new List<OrderDetail>();
+        listOrderDetail = _memoryContext.OrderDetails.Values.Where(o => o.OrderCode.Equals(orderCode)).ToList();
+        return await Task.FromResult(listOrderDetail);
+    }
     public async Task<OrderDetail> GetById(string id)
     {
         if (!String.IsNullOrEmpty(id))
@@ -108,7 +114,7 @@ public class OrderDetailService : IOrderDetailService
         var orderDetail = await GetById(orderDetailCode);
         if (orderDetail != null)
         {
-            var oldSale= orderDetail.Sale;
+            var oldSale = orderDetail.Sale;
             var orderDetailDb = await _orderDetailRepository.UpdateSale(orderDetailCode, sale);
             if (orderDetailDb != null)
                 _orderDetailRepository.SaveChangesAsync();
@@ -120,10 +126,10 @@ public class OrderDetailService : IOrderDetailService
 
     public async Task<OrderDetail> UpdateTotalPrice(string orderDetailCode, long totalPrice)
     {
-       var orderDetail = await GetById(orderDetailCode);
+        var orderDetail = await GetById(orderDetailCode);
         if (orderDetail != null)
         {
-            var oldTotalPrice= orderDetail.TotalPrice;
+            var oldTotalPrice = orderDetail.TotalPrice;
             var orderDetailDb = await _orderDetailRepository.UpdateNumberProduct(orderDetailCode, totalPrice);
             if (orderDetailDb != null)
                 _orderDetailRepository.SaveChangesAsync();
