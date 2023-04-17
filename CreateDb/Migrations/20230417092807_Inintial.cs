@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace CreateDb.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Inintial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,6 +21,27 @@ namespace CreateDb.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Category", x => x.CategoryCode);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Order",
+                columns: table => new
+                {
+                    OrderCode = table.Column<string>(type: "VARCHAR2(10)", unicode: false, maxLength: 10, nullable: false),
+                    OrderDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false),
+                    DeliveryDate = table.Column<DateTime>(type: "TIMESTAMP(7)", nullable: false),
+                    TotalPrice = table.Column<long>(type: "NUMBER(19)", nullable: false),
+                    Email = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false),
+                    Phone = table.Column<decimal>(type: "Number", maxLength: 10, nullable: false),
+                    Address = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false),
+                    Seller = table.Column<string>(type: "NVARCHAR2(50)", maxLength: 50, nullable: false),
+                    Paid = table.Column<long>(type: "NUMBER(19)", nullable: false),
+                    Sale = table.Column<long>(type: "NUMBER(19)", nullable: false),
+                    Status = table.Column<int>(type: "NUMBER(10)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Order", x => x.OrderCode);
                 });
 
             migrationBuilder.CreateTable(
@@ -91,6 +113,9 @@ namespace CreateDb.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Category");
+
+            migrationBuilder.DropTable(
+                name: "Order");
 
             migrationBuilder.DropTable(
                 name: "OrderDetail");
