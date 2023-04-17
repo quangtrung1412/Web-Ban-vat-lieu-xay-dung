@@ -140,6 +140,12 @@ public class OrderDetailService : IOrderDetailService
     }
     public async Task<List<OrderDetail>> DeleteListOrderDetail(string orderCode)
     {
-        throw new Exception();
+        var orderDetailsResult = new List<OrderDetail>();
+        if (!String.IsNullOrEmpty(orderCode))
+        {
+           var listOrderDetail = _memoryContext.OrderDetails.Values.Where(o => o.OrderCode.Equals(orderCode)).ToList();
+           orderDetailsResult= await _orderDetailRepository.DeleteListOrderDetail(listOrderDetail);
+        }
+        return orderDetailsResult;
     }
 }

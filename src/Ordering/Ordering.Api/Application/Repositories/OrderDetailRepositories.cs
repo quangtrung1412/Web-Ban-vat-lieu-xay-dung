@@ -1,3 +1,4 @@
+using System.Collections.Specialized;
 using App.Ordering.Api.Core.Data;
 using App.Ordering.Api.Core.Repositories;
 
@@ -114,7 +115,21 @@ public class OrderDetailRepository : IOrderDetailRepository
             return null;
         }
     }
-    public async Task<List<OrderDetail>> DeleteListOrderDetail(string orderCode){
-        throw new Exception();
+    public async Task<List<OrderDetail>> DeleteListOrderDetail(List<OrderDetail> orderDetails)
+    {
+         List<OrderDetail> orderDetailResult = new List<OrderDetail>();
+        try
+        {
+            if (orderDetails.Count() > 0)
+            {
+                _dbContext.OrderDetails.RemoveRange(orderDetails);
+                orderDetailResult = orderDetails;
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, ex.Message);
+        }
+        return await Task.FromResult(orderDetailResult);
     }
 }

@@ -53,8 +53,14 @@ public class OrderingController : ControllerBase
         return Ok(orderDTOResult);
     }
     [HttpDelete]
-    public async Task<IActionResult> DeleteOrder (string orderId)
+    public async Task<IActionResult> DeleteOrder(string orderCode)
     {
-        return BadRequest();
+        var orderDTOResult = new OrderDTO();
+        if (!String.IsNullOrEmpty(orderCode))
+        {
+            orderDTOResult.OrderDetails = await _orderDetailService.DeleteListOrderDetail(orderCode);
+            orderDTOResult.Order = await _orderingService.Delete(orderCode);
+        }
+        return Ok(orderDTOResult);
     }
 }
