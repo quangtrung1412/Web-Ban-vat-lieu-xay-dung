@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 namespace App.Ordering.Api.Core.Data.EntityTypeConfigurations;
 
 public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
@@ -9,17 +8,16 @@ public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
     {
         builder.ToTable("Order");
         builder.HasKey(x => x.OrderCode);
+        
         builder.Property(e => e.OrderCode)
         .HasMaxLength(10)
         .IsUnicode(false)
         .HasColumnName("OrderCode");   
 
         builder.Property(e => e.OrderDate)
-        .HasPrecision(7)
         .HasColumnName("OrderDate");
 
         builder.Property(e => e.DeliveryDate)
-        .HasPrecision(7)
         .HasColumnName("DeliveryDate");
 
         builder.Property(e => e.TotalPrice)
@@ -30,17 +28,15 @@ public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
         .HasColumnName("Email");
 
         builder.Property(e => e.Phone)
+        .HasColumnType("Number")
         .HasMaxLength(10)
-        .HasColumnType("number")
         .HasColumnName("Phone");
 
         builder.Property(e => e.Address)
-        .HasColumnType("nvarchar")
         .HasMaxLength(100)
         .HasColumnName("Address");
 
         builder.Property(e => e.Seller)
-        .HasColumnType("nvarchar")
         .HasMaxLength(50)
         .HasColumnName("Seller");
 
@@ -51,6 +47,8 @@ public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
         .HasColumnName("Sale");
 
         builder.Property(e => e.Status)
+        .HasConversion(s => s.Id, s => OrderingStatus.From(s))
+        .IsRequired(false)
         .HasColumnName("Status");
 
     }

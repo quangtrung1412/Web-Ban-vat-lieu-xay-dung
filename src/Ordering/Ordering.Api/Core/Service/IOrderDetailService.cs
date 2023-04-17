@@ -9,4 +9,5 @@ public interface IOrderDetailService : IService<OrderDetail>
     Task<OrderDetail> UpdateTotalPrice(string orderDetailCode, long totalPrice);
     Task<OrderDetail> UpdateSale(string orderDetailCode, long sale);
     Task<List<OrderDetail>> GetOrderDetailByOrderCode(string orderCode);
+    Task<List<OrderDetail>> DeleteListOrderDetail(string orderCode);
 }

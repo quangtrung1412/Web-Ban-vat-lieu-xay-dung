@@ -138,4 +138,8 @@ public class OrderDetailService : IOrderDetailService
         }
         return orderDetail;
     }
+    public async Task<List<OrderDetail>> DeleteListOrderDetail(string orderCode)
+    {
+        throw new Exception();
+    }
 }

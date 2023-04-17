@@ -114,4 +114,7 @@ public class OrderDetailRepository : IOrderDetailRepository
             return null;
         }
     }
+    public async Task<List<OrderDetail>> DeleteListOrderDetail(string orderCode){
+        throw new Exception();
+    }
 }
