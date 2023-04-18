@@ -4,7 +4,7 @@ namespace App.Ordering.Api.Core.Data;
 public class OrderDetail
 {
     public string OrderDetailCode { get; set; }
-    public string OrderCode {get;set;}
+    public string OrderCode { get; set; }
     public string ProductCode { get; set; }
     public string ProductName { get; set; }
     public long RetailPrice { get; set; }
@@ -12,4 +12,13 @@ public class OrderDetail
     public long NumberProduct { get; set; }
     public long TotalPrice { get; set; }
     public long Sale { get; set; }
+
+    public long GetTotalPrice()
+    {
+        return RetailPrice * NumberProduct;
+    }
+    public long GetTotalSale()
+    {
+        return Sale * NumberProduct;
+    }
 }

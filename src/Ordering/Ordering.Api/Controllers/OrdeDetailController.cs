@@ -8,26 +8,12 @@ namespace App.Ordering.Api.Controller;
 public class OrderDetailController : ControllerBase
 {
     private readonly IOrderDetailService _orderDetailService;
+    private readonly IOrderingService _orderingService;
 
-    public OrderDetailController(IOrderDetailService orderDetailService)
+    public OrderDetailController(IOrderDetailService orderDetailService, IOrderingService orderingService)
     {
         _orderDetailService = orderDetailService;
-    }
-    [HttpGet]
-    public async Task<IActionResult> GetOrderDetail(string search, int page)
-    {
-        var listOrderDetail = await _orderDetailService.GetAll(search, page);
-        return Ok(listOrderDetail);
-    }
-    [HttpPost]
-    public async Task<IActionResult> AddOrderDetail(OrderDetail orderDetail)
-    {
-        OrderDetail orderDetailResult = new OrderDetail();
-        if (orderDetail != null)
-        {
-            orderDetailResult = await _orderDetailService.Add(orderDetail);
-        }
-        return Ok(orderDetailResult);
+        _orderingService = orderingService;
     }
     [HttpDelete]
     [Route("/{orderDetailId}")]
@@ -48,6 +34,7 @@ public class OrderDetailController : ControllerBase
         if (orderDetailId != null && numberProduct > 0)
         {
             orderDetailResult = await _orderDetailService.UpdateNumberProduct(orderDetailId, numberProduct);
+            var order = await _orderingService.UpdateTotalPrice(orderDetailResult.OrderCode,orderDetailResult.GetTotalPrice());
         }
         return Ok(orderDetailResult);
     }

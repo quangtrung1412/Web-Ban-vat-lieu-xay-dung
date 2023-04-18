@@ -71,6 +71,8 @@ public class OrderDetailRepository : IOrderDetailRepository
             if (orderDetail != null)
             {
                 orderDetail.NumberProduct = numberProduct;
+                orderDetail.Sale = orderDetail.GetTotalSale();
+                orderDetail.TotalPrice = orderDetail.GetTotalPrice();
             }
             return orderDetail;
         }
