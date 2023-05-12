@@ -1,4 +1,6 @@
-﻿
+﻿header {
+  display: flex;
+}
 #nav-bar {
   position: fixed;
   width: 100%;
