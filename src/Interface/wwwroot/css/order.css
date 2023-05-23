@@ -1,0 +1,30 @@
+.order {
+    width: 1400px;
+    margin-left: -50px;
+    margin-top: 40px;
+}
+
+.searhOrder {
+    display: inherit;
+    margin-left:5rem;
+    width: 30rem;
+}
+
+.titleOrder {
+    margin-left: 1.5rem;
+}
+#navbarOrderContent {
+    margin-left: 15rem;
+
+}
+.buttonAddOrder {
+    background-color: chartreuse;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0.2rem 0.5rem #e7eaed
+}
+.buttonlist{
+    margin-left: 1rem;
+    background-color: chartreuse;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0.2rem 0.5rem #e7eaed
+}
