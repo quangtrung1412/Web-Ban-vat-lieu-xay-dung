@@ -12,8 +12,8 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace CreateDb.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    [Migration("20230417092807_Inintial")]
-    partial class Inintial
+    [Migration("20230524091028_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

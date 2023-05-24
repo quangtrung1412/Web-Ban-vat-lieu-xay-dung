@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using App.Shared.RetryPolicy;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,4 +8,5 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddPolicy(this IServiceCollection services)
     => services.AddSingleton<IRetryPolicyFactory, RetryPolicyFactory>();
+
 }
