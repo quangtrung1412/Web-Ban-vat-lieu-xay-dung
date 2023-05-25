@@ -1,6 +1,6 @@
 using App.Producting.Api.Core.Data;
-using App.Producting.Api.Core.Data.Entities;
 using App.Producting.Api.Core.Repositories;
+using App.Shared.Entities;
 
 namespace App.Producting.Api.Application.Repositories;
 

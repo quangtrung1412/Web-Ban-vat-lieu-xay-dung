@@ -1,3 +1,4 @@
+using App.Shared.Entities;
 using App.Shared.RetryPolicy;
 using Microsoft.EntityFrameworkCore;
 

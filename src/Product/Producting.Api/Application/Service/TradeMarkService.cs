@@ -1,8 +1,8 @@
-using App.Producting.Api.Core.Data.Entities;
 using App.Producting.Api.Core.Repositories;
 using App.Producting.Api.Core.Service;
 using App.Producting.Producting.Api.Core.Data;
 using App.Shared.Core.Handle;
+using App.Shared.Entities;
 using App.Shared.Utils;
 
 namespace App.Producting.Api.Application.Service;

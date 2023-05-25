@@ -1,4 +1,3 @@
-using App.Producting.Api.Core.Data.Entities;
 using App.Producting.Api.Core.Service;
 using Microsoft.AspNetCore.Mvc;
 

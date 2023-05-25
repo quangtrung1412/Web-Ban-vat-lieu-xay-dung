@@ -1,4 +1,3 @@
-using App.Producting.Api.Core.Data.Entities;
 using App.Shared.Entities;
 
 namespace App.Producting.Producting.Api.Core.Data;

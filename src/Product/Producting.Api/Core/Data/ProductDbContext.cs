@@ -1,4 +1,3 @@
-using App.Producting.Api.Core.Data.Entities;
 using App.Producting.Api.Core.Data.EntityTypeConfiguration;
 using App.Shared.Entities;
 using Microsoft.EntityFrameworkCore;

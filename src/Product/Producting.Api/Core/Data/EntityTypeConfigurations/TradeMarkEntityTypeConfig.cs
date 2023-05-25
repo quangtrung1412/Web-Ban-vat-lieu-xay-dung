@@ -1,4 +1,4 @@
-using App.Producting.Api.Core.Data.Entities;
+using App.Shared.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

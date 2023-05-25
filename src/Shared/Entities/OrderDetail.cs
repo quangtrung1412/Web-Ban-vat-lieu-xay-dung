@@ -1,6 +1,4 @@
-using App.Shared.Entities;
-
-namespace App.Ordering.Api.Core.Data;
+namespace App.Shared.Entities;
 public class OrderDetail
 {
     public string OrderDetailCode { get; set; }

@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace App.Ordering.Api.Core.Data.Entities.SeedWork;
+namespace App.Shared.Entities.SeedWork;
 public abstract class Enumeration : IComparable
 {
     public string Name { get; private set; }

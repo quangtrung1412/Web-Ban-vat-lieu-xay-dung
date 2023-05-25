@@ -1,4 +1,4 @@
-using App.Producting.Api.Core.Data.Entities;
+using App.Shared.Entities;
 using App.Producting.Api.Core.Repositories;
 using App.Producting.Api.Core.Service;
 using App.Producting.Producting.Api.Core.Data;

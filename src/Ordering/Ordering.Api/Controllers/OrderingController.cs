@@ -1,5 +1,4 @@
 using App.Ordering.Api.Application.DTOs;
-using App.Ordering.Api.Core.Data;
 using App.Ordering.Api.Core.Service;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,6 +1,7 @@
 using System.Collections.Specialized;
 using App.Ordering.Api.Core.Data;
 using App.Ordering.Api.Core.Repositories;
+using App.Shared.Entities;
 
 namespace App.Ordering.Api.Application.Repositories;
 

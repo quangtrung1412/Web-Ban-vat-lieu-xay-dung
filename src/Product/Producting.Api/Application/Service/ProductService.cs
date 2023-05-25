@@ -144,7 +144,7 @@ public class ProductService : IProductService
 
         List<Product> listProduct = new List<Product>();
         listProduct = _memoryContext.Products.Values.Where(p => string.IsNullOrEmpty(search) || p.ProductName.Contains(search)
-        || p.TradeMarkName.Contains(search) || p.CategoryName.Contains(search)).ToList();
+        || p.TradeMarkCode.Contains(search) || p.CategoryCode.Contains(search)).ToList();
 
         var data = listProduct.OrderBy(p => p.ProductCode)
                               .Skip((page - 1) * pageSize)

@@ -1,5 +1,5 @@
-using App.Ordering.Api.Core.Data;
 using App.Shared.Core.Service;
+using App.Shared.Entities;
 
 namespace App.Ordering.Api.Core.Service;
 

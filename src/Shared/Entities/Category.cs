@@ -1,4 +1,4 @@
-namespace App.Producting.Api.Core.Data.Entities;
+namespace App.Shared.Entities;
 //Danh Sách Sản Phẩm
 public class Category
 {

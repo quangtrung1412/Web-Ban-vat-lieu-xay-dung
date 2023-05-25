@@ -1,7 +1,6 @@
+using App.Shared.Entities.SeedWork;
 
-using App.Ordering.Api.Core.Data.Entities.SeedWork;
-
-namespace App.Ordering.Api.Core.Data;
+namespace App.Shared.Entities;
 
 public class OrderingStatus : Enumeration
 {
