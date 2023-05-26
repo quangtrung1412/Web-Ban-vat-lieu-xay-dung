@@ -87,8 +87,8 @@ namespace CreateDb.Migrations
                     Inventory = table.Column<long>(type: "NUMBER(19)", nullable: false),
                     Unit = table.Column<int>(type: "NUMBER(10)", nullable: false),
                     Status = table.Column<bool>(type: "NUMBER(1)", nullable: false),
-                    CategoryName = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false),
-                    TradeMarkName = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false)
+                    CategoryCode = table.Column<string>(type: "NVARCHAR2(10)", maxLength: 10, nullable: false),
+                    TradeMarkCode = table.Column<string>(type: "NVARCHAR2(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {

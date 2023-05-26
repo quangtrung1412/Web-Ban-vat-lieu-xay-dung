@@ -18,7 +18,7 @@ public class Product
     //trạng thái 
     public bool Status {get;set;}
     // Danh sách sản phẩm 
-    public string CategoryName{get;set;}
+    public string CategoryCode{get;set;}
     //Mã Thương hiệu
-    public string TradeMarkName {get;set;}
+    public string TradeMarkCode {get;set;}
 }

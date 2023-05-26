@@ -1,4 +1,5 @@
 using App.Producting.Api.Core.Service;
+using App.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Producting.Api.Controller;

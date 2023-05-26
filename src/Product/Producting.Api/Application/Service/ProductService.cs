@@ -26,7 +26,9 @@ public class ProductService : IProductService
     {
         var productCode = "";
         var numberMax = _memoryContext.Products.Keys.Max();
-        var numberProduct = Int32.Parse(numberMax.Substring(2)) + 1;
+        var numberProduct = 00000001;
+        if(!string.IsNullOrEmpty(numberMax))
+            numberProduct= Int32.Parse(numberMax.Substring(2)) + 1;
 
         var numberProductCode = GenerateCode.GenerateCodeFollowNumber(numberProduct);
         productCode = Constants.ProductKey + numberProductCode;
