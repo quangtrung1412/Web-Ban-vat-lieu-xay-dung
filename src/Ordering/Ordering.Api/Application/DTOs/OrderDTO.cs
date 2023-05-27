@@ -1,4 +1,5 @@
 using App.Ordering.Api.Core.Data;
+using App.Shared.Entities;
 
 namespace App.Ordering.Api.Application.DTOs;
 

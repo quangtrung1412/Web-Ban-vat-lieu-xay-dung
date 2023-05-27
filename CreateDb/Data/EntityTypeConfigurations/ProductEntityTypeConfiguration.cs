@@ -41,12 +41,12 @@ public class ProductEntityTyeConfiguration : IEntityTypeConfiguration<Product>
         builder.Property(e => e.Status)
         .HasColumnName("Status");
 
-        builder.Property(e => e.CategoryName)
-       .HasMaxLength(100)
-       .HasColumnName("CategoryName");
+        builder.Property(e => e.CategoryCode)
+       .HasMaxLength(10)
+       .HasColumnName("CategoryCode");
 
-        builder.Property(e => e.TradeMarkName)
-       .HasMaxLength(100)
-       .HasColumnName("TradeMarkName");
+        builder.Property(e => e.TradeMarkCode)
+       .HasMaxLength(10)
+       .HasColumnName("TradeMarkCode");
     }
 }

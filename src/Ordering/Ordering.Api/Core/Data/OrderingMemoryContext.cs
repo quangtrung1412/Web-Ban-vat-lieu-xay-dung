@@ -1,3 +1,5 @@
+using App.Shared.Entities;
+
 namespace App.Ordering.Api.Core.Data;
 
 public class OrderingMemoryContext

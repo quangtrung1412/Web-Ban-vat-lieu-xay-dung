@@ -1,5 +1,6 @@
 using App.Ordering.Api.Core.Data;
 using App.Ordering.Api.Core.Service;
+using App.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Ordering.Api.Controller;

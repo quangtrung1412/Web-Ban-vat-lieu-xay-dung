@@ -179,11 +179,11 @@ namespace CreateDb.Migrations
                         .HasColumnType("VARCHAR2(10)")
                         .HasColumnName("ProductCode");
 
-                    b.Property<string>("CategoryName")
+                    b.Property<string>("CategoryCode")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("CategoryName");
+                        .HasMaxLength(10)
+                        .HasColumnType("NVARCHAR2(10)")
+                        .HasColumnName("CategoryCode");
 
                     b.Property<decimal>("Cost")
                         .HasColumnType("NUMBER(20,3)")
@@ -213,11 +213,11 @@ namespace CreateDb.Migrations
                         .HasColumnType("NUMBER(1)")
                         .HasColumnName("Status");
 
-                    b.Property<string>("TradeMarkName")
+                    b.Property<string>("TradeMarkCode")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("TradeMarkName");
+                        .HasMaxLength(10)
+                        .HasColumnType("NVARCHAR2(10)")
+                        .HasColumnName("TradeMarkCode");
 
                     b.Property<int>("Unit")
                         .HasColumnType("NUMBER(10)")

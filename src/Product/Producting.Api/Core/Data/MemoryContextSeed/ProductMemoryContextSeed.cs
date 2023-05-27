@@ -1,4 +1,3 @@
-using App.Producting.Api.Core.Data.Entities;
 using App.Producting.Producting.Api.Core.Data;
 using App.Shared.Entities;
 using App.Shared.RetryPolicy;

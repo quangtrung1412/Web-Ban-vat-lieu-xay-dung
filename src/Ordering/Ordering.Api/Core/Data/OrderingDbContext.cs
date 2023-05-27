@@ -1,5 +1,5 @@
-using App.Ordering.Api.Application.Repositories;
 using App.Ordering.Api.Core.Data.EntityTypeConfigurations;
+using App.Shared.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Ordering.Api.Core.Data;

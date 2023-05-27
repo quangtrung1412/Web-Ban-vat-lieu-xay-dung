@@ -18,42 +18,61 @@
                     <a class="nav-link" href="#"><span class="sr-onlys">+ </span> Thêm mới </a>
                 </li>
                 <li class="nav-item buttonlist">
-                    <a class="nav-link " href="#" ><span class="fa fa-list" aria-hidden="true"></span> </a>
+                    <a class="nav-link " href="#"><span class="fa fa-list" aria-hidden="true"></span> </a>
                 </li>
             </ul>
 
         </div>
     </nav>
+    <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
+        </a>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+    </div>
     <table class="table">
         <thead class="thead-dark">
             <tr>
+                <th scope="col"></th>
                 <th scope="col">Mã Hàng</th>
                 <th scope="col">Tên Hàng</th>
                 <th scope="col">Giá Bán </th>
                 <th scope="col">Giá Vốn</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <th><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></th>
                 <th scope="row">1</th>
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>Otto</td>
+                <th>
+                    <a href="#"><button type="button" class="btn btn-sm btn-warning">Sửa</button></a>
+                    <a href="#"><button type="button" class="btn btn-sm btn-danger">Xóa</button></a>
+                </th>
             </tr>
             <tr>
+                <th><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"></th>
                 <th scope="row">2</th>
                 <td>Jacob</td>
                 <td>Thornton</td>
                 <td>Otto</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>Otto</td>
+                <th>
+                    <a href="#"><button type="button" class="btn btn-sm btn-warning">Sửa</button></a>
+                    <a href="#"><button type="button" class="btn btn-sm btn-danger">Xóa</button></a>
+                </th>
             </tr>
         </tbody>
     </table>
 
-
 </div>
+
+<script src="~/js/createtable.js" asp-append-version="true"></script>

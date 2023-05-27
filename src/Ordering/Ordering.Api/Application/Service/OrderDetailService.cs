@@ -2,6 +2,7 @@ using App.Ordering.Api.Core.Data;
 using App.Ordering.Api.Core.Repositories;
 using App.Ordering.Api.Core.Service;
 using App.Shared.Core.Handle;
+using App.Shared.Entities;
 using App.Shared.Utils;
 
 namespace App.Ordering.Api.Application.Service;

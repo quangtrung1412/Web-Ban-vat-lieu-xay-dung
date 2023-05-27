@@ -1,6 +1,5 @@
-using App.Producting.Api.Core.Data.Entities;
 using App.Shared.Core.Service;
-using Microsoft.AspNetCore.Hosting.Server;
+using App.Shared.Entities;
 
 namespace App.Producting.Api.Core.Service;
 

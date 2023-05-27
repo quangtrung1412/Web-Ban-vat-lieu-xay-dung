@@ -26,7 +26,9 @@ public class ProductService : IProductService
     {
         var productCode = "";
         var numberMax = _memoryContext.Products.Keys.Max();
-        var numberProduct = Int32.Parse(numberMax.Substring(2)) + 1;
+        var numberProduct = 00000001;
+        if(!string.IsNullOrEmpty(numberMax))
+            numberProduct= Int32.Parse(numberMax.Substring(2)) + 1;
 
         var numberProductCode = GenerateCode.GenerateCodeFollowNumber(numberProduct);
         productCode = Constants.ProductKey + numberProductCode;
@@ -144,7 +146,7 @@ public class ProductService : IProductService
 
         List<Product> listProduct = new List<Product>();
         listProduct = _memoryContext.Products.Values.Where(p => string.IsNullOrEmpty(search) || p.ProductName.Contains(search)
-        || p.TradeMarkName.Contains(search) || p.CategoryName.Contains(search)).ToList();
+        || p.TradeMarkCode.Contains(search) || p.CategoryCode.Contains(search)).ToList();
 
         var data = listProduct.OrderBy(p => p.ProductCode)
                               .Skip((page - 1) * pageSize)
